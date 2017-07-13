@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Game Here</title>
+    <script src="/node_modules/lodash/lodash.min.js"></script>
+    <script src="/node_modules/vue/dist/vue.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <div id="app">
+      <pre class="info-panel">{{ JSON.stringify(currentTile, null, 2) }}</pre>
+      <div class="map-view"
+        tabindex="0"
+        @keydown.73="viewY += 20"
+        @keydown.74="viewX += 20"
+        @keydown.75="viewY -= 20"
+        @keydown.76="viewX -= 20"
+        @keydown.33="zoomRatio *= 1.1"
+        @keydown.34="zoomRatio *= 0.9">
+        <div class="map-container" :style="'transform: translate(' + viewX + 'vw,' + viewY + 'vh) scale(' + zoomRatio + ', ' + zoomRatio + ');'">
+          <map-tile v-for="tile in tiles"
+            :x="tile.x" :y="tile.y" :type="tile.type"
+            :selected="(currentTile.x === tile.x) && (currentTile.y === tile.y)" @mouseover.native="readTileInfo">
+          </map-tile>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/helpers/map-generator.js"></script>
+  <script src="/assets/components/map-tile.js"></script>
+  <script src="/assets/app.js"></script>
+</html>

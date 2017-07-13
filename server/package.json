@@ -1,0 +1,11 @@
+{
+  "name": "here-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A game",
+  "author": "laosb",
+  "dependencies": {
+    "lowdb": "^0.16.2",
+    "socket.io": "^2.0.3"
+  }
+}
